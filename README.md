@@ -4,7 +4,7 @@
 
 ## 项目依赖
 
->- `nbm install` 安装项目需要的所有依赖包
+>- `npm install` 安装项目需要的所有依赖包
 
 ## 目录结构
 
@@ -42,13 +42,12 @@
 ## 技术栈
 
 >- `ES6`
->- `elementUl`
+>- `element-UI`
 >- `axios`
 >- `vue`
 >- `vuex`
 
 ## 测试和线上地址
-
 
 ## 需求文档
 
@@ -56,7 +55,4 @@
 
 >- `1.0.0` 一期需求，详见 [需求文档1]
 
-
 ## 备注
-
-## Creating a new branch is quick."# yasuoxjx" 
