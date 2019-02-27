@@ -1,0 +1,20 @@
+<div class="info-API">
+  <div class="main-content">
+    <div class="wrap3">
+      <section class="top">
+        <div class="top_main">
+          <div class="uid">
+            <span>UID：</span>
+            <span>{{ uidName }}</span>
+          </div>
+          <div class="token">
+            <span>Token：</span>
+            <span>{{ tokenId }}</span>
+          </div>
+          <el-button type="primary" size="small" style="margin-left: 161px;" @click="submitToken()">重置Token</el-button>
+        </div>
+      </section>
+    </div>
+  </div>
+  <router-view></router-view>
+</div>

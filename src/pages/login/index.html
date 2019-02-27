@@ -1,0 +1,91 @@
+<div class="login">
+    <div class="header">
+        <div class="header-content">
+            <img src="../../assets/img/logo1.png">
+            <el-button size="small" @click="goFirstPage">返回首页</el-button>
+        </div>
+    </div>
+    <div class="main">
+        <div class="main-content">
+            <p>登录</p>
+            <el-form 
+                label-width="150px"
+                size="medium"
+                :model="form"
+                status-icon
+                ref="form"
+                :rules="rules">
+                <el-form-item label="用户名" prop="userName">
+                    <el-input v-model.trim="form.userName"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="password">
+                    <el-input type="password" v-model.trim="form.password"></el-input>
+                </el-form-item>
+                <el-form-item label="验证码" prop="captcharCode">
+                    <el-input v-model.trim="form.captcharCode"></el-input>
+                </el-form-item>
+                <el-form-item label=" ">
+                    <div class="cap-url">
+                        <span class="cap-img" >
+                            <img :src="imgUrl" ref="capImg">
+                        </span>
+                        <span @click="refreshImg" class="refresh-img">看不清楚，换一张</span>
+                    </div>
+                </el-form-item>
+                <el-form-item label=" ">
+                    <el-button @click="loginData">{{loginText}}</el-button>
+                </el-form-item>
+                <el-form-item label=" ">
+                    <div class="go-register">
+                        <div class="forget">忘记密码</div>
+                        <div class="no-account">
+                            还没有账号？
+                            <span class="go-reg" @click="goRegister">
+                                马上注册
+                            </span>
+                        </div>
+                    </div>
+                </el-form-item>
+            </el-form>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <div class="all-of-pays">
+                <div class="foot-title">
+                    <img src="../../assets/img/logo.png" class="logo-img">
+                </div>
+                <div>
+                    专为个人收款而生的支付工具。为支付宝、微信支付的个人账户，提供即时到账收款API接口。安全可靠，费率低。
+                </div>
+            </div>
+            <div class="link">
+                <div class="foot-title">
+                    网站链接
+                </div>
+                <p><a href="../index.html">首页</a></p>
+                <p><a href="../../page/help.html">新手指南</a></p>
+                <p><a href="../../page/guide.html">API接口文档</a></p>
+                <p><a href="../../page/help.html">帮助</a></p>
+            </div>
+            <div class="contact">
+                <div class="foot-title">
+                    联系我们
+                </div>
+                <p>售前 <img src="../../assets/img/qq.jpg"> <img src="../../assets/img/qq.jpg"></p>
+                <p>技术 <img src="../../assets/img/qq.jpg"> <img src="../../assets/img/qq.jpg"></p>
+                <p>夜间 <img src="../../assets/img/qq.jpg"></p>
+            </div>
+            <div class="focus">
+                <div class="foot-title">
+                    关注微信
+                </div>
+                <img src="../../assets/img/erwima.jpg">
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Copyright &#169; 2017-2018. AllofPays Inc. All rights reserved
+        </div>
+    </div>
+   <router-view></router-view>
+</div>

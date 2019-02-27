@@ -1,0 +1,106 @@
+<div class="my-incomes">
+    <div class="main-content" v-if="show">
+        <div class="notice">
+            <img src="../../assets/img/notice.png">
+            <span v-if="!userInfo.needAlarm">
+                当前余额：¥{{userInfo.userBalance}}
+            </span>
+            <span v-else>
+                余额不足 余额应保持10元以上，用于扣除手续费
+            </span>
+            <span class="btn-group">
+                <el-button type="warning" plain @click="goDetail">余额明细</el-button>
+                <el-button type="warning" @click="dialogShow=true;">充值</el-button>
+            </span>
+        </div>
+        <div class="content">
+            <div class="first-content">
+                <div>
+                    <img src="../../assets/img/incomes1.png">
+                    <span>今日收入</span><br/>
+                    <span>{{allData.incomeToday}}</span>
+                </div>
+                <div>
+                    <img src="../../assets/img/incomes2.png">
+                    <span>昨日收入</span><br/>
+                    <span>{{allData.incomeYesterday}}</span>
+                </div>
+                <div>
+                    <img src="../../assets/img/incomes3.png">
+                    <span>7天收入</span><br/>
+                    <span>{{allData.incomeWeek}}</span>
+                </div>
+                <div>
+                    <img src="../../assets/img/incomes4.png">
+                    <span>30天收入</span><br/>
+                    <span>{{allData.incomeMonth}}</span>
+                </div>
+            </div>
+            <div class="first-content">
+                <div>
+                    <img src="../../assets/img/incomes5.png">
+                    <span>今日订单</span><br/>
+                    <span>{{allData.orderToday}}</span>
+                </div>
+                <div>
+                    <img src="../../assets/img/incomes6.png">
+                    <span>昨日订单</span><br/>
+                    <span>{{allData.orderYesterday}}</span>
+                </div>
+                <div>
+                    <img src="../../assets/img/incomes7.png">
+                    <span>7天订单</span><br/>
+                    <span>{{allData.orderWeek}}</span>
+                </div>
+                <div>
+                    <img src="../../assets/img/incomes8.png">
+                    <span>30天订单</span><br/>
+                    <span>{{allData.orderMonth}}</span>
+                </div>
+            </div>
+        </div>
+        <el-dialog width="30%" title="充值" :visible.sync="dialogShow">
+            <div class="dialog-content">
+                充值金额
+                <el-select v-model="selectTypeId" size="small">
+                    <el-option v-for="(item, index) in priceList"
+                        :label="item.label"
+                        :value="item.value"
+                        :key="index">
+                    </el-option>
+                </el-select>
+            </div>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogShow = false" size="small">取 消</el-button>
+                <el-button type="primary" @click="userRechargeMoney()" size="small">支付宝充值</el-button>
+            </div>
+        </el-dialog>
+        <el-dialog :visible.sync="qrCodeDialog" width="50%" class="qrcode" @close="qrcodeClose">
+            <div class="order-content">
+                <img src="../../assets/img/alipay_top.png" >
+                <div class="img-div">
+                    <vue-qr :logoSrc="userRecharge.logo" :text="userRecharge.qrcodeurl" :size="200" :margin="0" class="vue-qrcode"></vue-qr>
+                    <img src="../../assets/img/alipay_mid.png" style="position: relative;top: -135px;">
+                </div>
+                <h1>￥{{userRecharge.price}}</h1>
+                <div class="pay-price">请支付上方所显示的金额，否则订单支付失败！</div>
+                <h2 v-show="refreshPage">请刷新本页</h2>
+                <h3>订单: {{userRecharge.orderid}}</h3>
+                <div class="time-div">
+                    <span>{{this.dateTime.hour}}</span><span>时</span>
+                    <span>{{this.dateTime.min}}</span><span>分</span>
+                    <span>{{this.dateTime.second}}</span><span>秒</span>
+                </div>
+                <div>
+                    <img src="../../assets/img/sao.png" class="open-img">
+                    打开支付宝扫一扫
+                </div>
+            </div>
+
+        </el-dialog>
+
+
+
+    </div>
+   <router-view></router-view>
+</div>
