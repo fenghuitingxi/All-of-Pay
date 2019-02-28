@@ -6,7 +6,8 @@ module.exports = {
     parser: 'babel-eslint'
   },
   env: {
-    browser: true
+    browser: true,
+    es6: true
   },
   // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
   // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
@@ -27,7 +28,7 @@ module.exports = {
     'no-undef': 1, // 不能有未定义的变量
     'no-var': 0, // 禁用var，用let和const代替
     'eqeqeq': 1, // 必须使用全等
-    // 'indent': [2, 4], // 缩进风格
+    'indent': [2, 2], // 缩进风格
     'semi': [2, 'always'], // 语句强制分号结尾
     'no-use-before-define': 2, // 未定义前不能使用
     'no-unused-vars': [2, {'vars': 'all', 'args': 'after-used'}],
